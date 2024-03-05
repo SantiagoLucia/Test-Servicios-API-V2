@@ -10,6 +10,7 @@ from routers.hml.consultaDocumento import buscarDocumentoPublicablePorNumero as 
 from routers.hml.consultaDocumento import buscarNumeroGDEBA as hml_buscarNumeroGDEBA
 from routers.hml.consultaDocumento import buscarPDFPorNumero as hml_buscarPDFPorNumero
 from routers.hml.consultaDocumento import buscarPorNumero as hml_buscarPorNumero
+from routers.hml.consultaCuitCuil import buscarPorCuitCuil as hml_buscarPorCuitCuil
 
 import configparser
 from pathlib import Path
@@ -29,6 +30,7 @@ app.include_router(hml_buscarDocumentoPublicablePorNumero.router)
 app.include_router(hml_buscarNumeroGDEBA.router)
 app.include_router(hml_buscarPDFPorNumero.router)
 app.include_router(hml_buscarPorNumero.router)
+app.include_router(hml_buscarPorCuitCuil.router)
 
 @app.get("/test_servicios", response_class=HTMLResponse)
 def root(request: Request):
