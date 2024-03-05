@@ -1,0 +1,10 @@
+[Unit]
+Description = Aplicacion para testear servicios GDEBA
+After = network.target
+
+[Service]
+User = root
+Group = root
+WorkingDirectory = /srv/www/vhosts/testws_api_v2
+ExecStart = /usr/local/bin/uvicorn main:app --host 0.0.0.0 --port 8080 --workers 1
+Restart = always

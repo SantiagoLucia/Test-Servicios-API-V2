@@ -1,0 +1,106 @@
+<!-- templates/home.html -->
+<html>
+
+<head>
+    <title>Test Servicios API - V2</title>
+    <style type="text/css">
+
+        h1, h2 {
+            font-family: sans-serif;
+        }
+
+        .styled-table {
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            font-family: sans-serif;
+            min-width: 400px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+        .styled-table thead tr {
+            background-color: #009879;
+            color: #ffffff;
+            text-align: left;
+        }
+        .styled-table th,
+        .styled-table td {
+            padding: 12px 15px;
+        }
+        .styled-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+        .styled-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+        .styled-table tbody tr:last-of-type {
+            border-bottom: 2px solid #009879;
+        }        
+    </style>
+</head>
+
+<body>
+    <h1>Test Servicios API - V2</h1>
+    <h2>Aplicación para testear servicios web de GDEBA.</h2>
+
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>HML</th>
+                <th></th>
+            </tr>
+        </thead>
+    </table>
+
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>consultaUsuario</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>buscarPorUsuario</td>
+                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultaUsuario/buscarPorUsuario">Ejecutar</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>consultaDocumento</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>buscarDetallePorNumero</td>
+                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultaDocumento/buscarDetallePorNumero">Ejecutar</a></td>
+            </tr>
+            <tr>
+                <td>buscarDocumentoEnExpedientes</td>
+                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultaDocumento/buscarDocumentoEnExpedientes">Ejecutar</a></td>
+            </tr>
+            <tr>
+                <td>buscarDocumentoPublicablePorNumero</td>
+                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultaDocumento/buscarDocumentoPublicablePorNumero">Ejecutar</a></td>
+            </tr>
+            <tr>
+                <td>buscarNumeroGDEBA</td>
+                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultaDocumento/buscarNumeroGDEBA">Ejecutar</a></td>
+            </tr>
+            <tr>
+                <td>buscarPDFPorNumero</td>
+                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultaDocumento/buscarPDFPorNumero">Ejecutar</a></td>
+            </tr>
+            <tr>
+                <td>buscarPorNumero</td>
+                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultaDocumento/buscarPorNumero">Ejecutar</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+
+</html>
