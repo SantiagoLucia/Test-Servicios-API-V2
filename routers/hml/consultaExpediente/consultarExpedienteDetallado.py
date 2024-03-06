@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from servicios.consultaDocumento import ConsultaDocumento
+from servicios.consultaExpediente import ConsultaExpediente
 from datetime import datetime
 import configparser
 from pathlib import Path
@@ -9,25 +9,23 @@ config.read(Path("config.ini"))
 
 uri_token = config["hml"]["uri_token"]
 auth = (config["hml"]["user"], config["hml"]["pass"])
-uri_servicio = config["hml"]["uri_consultaDocumento"]
+uri_servicio = config["hml"]["uri_consultaExpediente"]
 
 router = APIRouter()
 
-@router.get("/test_servicios/hml/consultaDocumento/buscarDocumentoEnExpedientes", tags=["hml","buscarDocumentoEnExpedientes"])
-def test_buscarDocumentoEnExpedientes():
+@router.get("/test_servicios/hml/consultaExpediente/consultarExpedienteDetallado", tags=["hml","consultarExpedienteDetallado"])
+def test_consultarExpedienteDetallado():
     try:
         request = {
-            "request": {
-            "numeroDocumento": "IF-2021-00138435-GDEBA-TESTGDEBA",
+            "numeroExpediente": "EX-2020-00018982- -GDEBA-DDIMJGM"
             }
-        }
-        servicio = ConsultaDocumento(uri_servicio, uri_token, auth)
-        respuesta = servicio.buscarDocumentoEnExpedientes(request)
+        servicio = ConsultaExpediente(uri_servicio, uri_token, auth)
+        respuesta = servicio.consultarExpedienteDetallado(request)
         codigo, contenido, tiempo = respuesta
         dt = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         return {
-            "servicio": "consultaDocumento",
-            "metodo": "buscarDocumentoEnExpedientes",
+            "servicio": "consultaExpediente",
+            "metodo": "consultarExpedienteDetallado",
             "codigo": codigo,
             "tiempo": tiempo,
             "fecha": dt,
@@ -36,8 +34,8 @@ def test_buscarDocumentoEnExpedientes():
             }
     except:
         return {
-            "servicio": "consultaDocumento",
-            "metodo": "buscarDocumentoEnExpedientes",
+            "servicio": "consultaExpediente",
+            "metodo": "consultarExpedienteDetallado",
             "request": request,
             "error": "Request inválido",
             } 

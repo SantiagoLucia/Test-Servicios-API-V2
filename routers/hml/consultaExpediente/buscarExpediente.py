@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from servicios.consultaCuitCuil import ConsultaCuitCuil
+from servicios.consultaExpediente import ConsultaExpediente
 from datetime import datetime
 import configparser
 from pathlib import Path
@@ -9,21 +9,21 @@ config.read(Path("config.ini"))
 
 uri_token = config["hml"]["uri_token"]
 auth = (config["hml"]["user"], config["hml"]["pass"])
-uri_servicio = config["hml"]["uri_consultaCuitCuil"]
+uri_servicio = config["hml"]["uri_consultaExpediente"]
 
 router = APIRouter()
 
-@router.get("/test_servicios/hml/consultaCuitCuil/buscarPorCuitCuil", tags=["hml","buscarPorCuitCuil"])
-def test_buscarPorCuitCuil():
+@router.get("/test_servicios/hml/consultaExpediente/buscarExpediente", tags=["hml","buscarExpediente"])
+def test_buscarExpediente():
     try:
-        request = {"consultaCuitCuilRequest": "20367180162"}
-        servicio = ConsultaCuitCuil(uri_servicio, uri_token, auth)
-        respuesta = servicio.buscarPorCuitCuil(request)
+        request = {"numeroExpediente": "EX-2020-00018982- -GDEBA-DDIMJGM"}
+        servicio = ConsultaExpediente(uri_servicio, uri_token, auth)
+        respuesta = servicio.buscarExpediente(request)
         codigo, contenido, tiempo = respuesta
         dt = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         return {
-            "servicio": "consultaCuitCuil",
-            "metodo": "buscarPorCuitCuil",
+            "servicio": "consultaExpediente",
+            "metodo": "buscarExpediente",
             "codigo": codigo,
             "tiempo": tiempo,
             "fecha": dt,
@@ -32,8 +32,8 @@ def test_buscarPorCuitCuil():
             }
     except:
         return {
-            "servicio": "consultaCuitCuil",
-            "metodo": "buscarPorCuitCuil",
+            "servicio": "consultaExpediente",
+            "metodo": "buscarExpediente",
             "request": request,
             "error": "Request inválido",
             } 
