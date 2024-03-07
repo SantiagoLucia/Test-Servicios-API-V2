@@ -38,6 +38,7 @@ from routers.hml.consultaTipoDocumento import consultarTipoDocumento as hml_cons
 from routers.hml.datosHistoricos import datosHistoricos as hml_datosHistoricos
 from routers.hml.generacionDocumentos import generarDocumento as hml_generarDocumento
 from routers.hml.generacionDocumentos import generarDocumentoUsuarioExterno as hml_generarDocumentoUsuarioExterno
+from routers.hml.generacionExpediente import generarCaratulaExpediente as hml_generarCaratulaExpediente
 
 import configparser
 from pathlib import Path
@@ -85,6 +86,7 @@ app.include_router(hml_consultarTipoDocumento.router)
 app.include_router(hml_datosHistoricos.router)
 app.include_router(hml_generarDocumento.router)
 app.include_router(hml_generarDocumentoUsuarioExterno.router)
+app.include_router(hml_generarCaratulaExpediente.router)
 
 
 @app.get("/test_servicios", response_class=HTMLResponse)
