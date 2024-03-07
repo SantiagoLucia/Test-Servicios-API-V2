@@ -26,6 +26,14 @@ from routers.hml.consultaExpediente import consultarExpedientesPorSistemaOrigenL
 from routers.hml.consultaExpediente import consultarExpedientesPorSistemaOrigenReparticion as hml_consultarExpedientesPorSistemaOrigenReparticion
 from routers.hml.consultaExpediente import consultarIdFCPorNumeroExpediente as hml_consultarIdFCPorNumeroExpediente
 from routers.hml.consultaExpediente import validarExpediente as hml_validarExpediente
+from routers.hml.consultaEstadoPaseExpediente import consultaEstadoActualExpediente as hml_consultaEstadoActualExpediente
+from routers.hml.consultaEstadoPaseExpediente import consultaEstadosPaseExpedientePosibles as hml_consultaEstadosPaseExpedientePosibles
+from routers.hml.consultaEstadoPaseExpediente import esEstadoPaseExpedienteValido as hml_esEstadoPaseExpedienteValido
+from routers.hml.consultaRegistro import consultarRegistroPorCUIT as hml_consultarRegistroPorCUIT
+from routers.hml.consultaRegistro import consultarRegistroPorNumero as hml_consultarRegistroPorNumero
+from routers.hml.consultaRegistro import listarRegistroPublico as hml_listarRegistroPublico
+from routers.hml.consultaRegistro import listarTodosLosRegistrosPublicos as hml_listarTodosLosRegistrosPublicos
+from routers.hml.consultarNumero import consultarNumero as hml_consultarNumero
 
 import configparser
 from pathlib import Path
@@ -61,6 +69,14 @@ app.include_router(hml_consultarExpedientesPorSistemaOrigenLibreReparticion.rout
 app.include_router(hml_consultarExpedientesPorSistemaOrigenReparticion.router)
 app.include_router(hml_consultarIdFCPorNumeroExpediente.router)
 app.include_router(hml_validarExpediente.router)
+app.include_router(hml_consultaEstadoActualExpediente.router)
+app.include_router(hml_consultaEstadosPaseExpedientePosibles.router)
+app.include_router(hml_esEstadoPaseExpedienteValido.router)
+app.include_router(hml_consultarRegistroPorCUIT.router)
+app.include_router(hml_consultarRegistroPorNumero.router)
+app.include_router(hml_listarRegistroPublico.router)
+app.include_router(hml_listarTodosLosRegistrosPublicos.router)
+app.include_router(hml_consultarNumero.router)
 
 @app.get("/test_servicios", response_class=HTMLResponse)
 def root(request: Request):
