@@ -34,6 +34,10 @@ from routers.hml.consultaRegistro import consultarRegistroPorNumero as hml_consu
 from routers.hml.consultaRegistro import listarRegistroPublico as hml_listarRegistroPublico
 from routers.hml.consultaRegistro import listarTodosLosRegistrosPublicos as hml_listarTodosLosRegistrosPublicos
 from routers.hml.consultarNumero import consultarNumero as hml_consultarNumero
+from routers.hml.consultaTipoDocumento import consultarTipoDocumento as hml_consultarTipoDocumento
+from routers.hml.datosHistoricos import datosHistoricos as hml_datosHistoricos
+from routers.hml.generacionDocumentos import generarDocumento as hml_generarDocumento
+from routers.hml.generacionDocumentos import generarDocumentoUsuarioExterno as hml_generarDocumentoUsuarioExterno
 
 import configparser
 from pathlib import Path
@@ -77,6 +81,11 @@ app.include_router(hml_consultarRegistroPorNumero.router)
 app.include_router(hml_listarRegistroPublico.router)
 app.include_router(hml_listarTodosLosRegistrosPublicos.router)
 app.include_router(hml_consultarNumero.router)
+app.include_router(hml_consultarTipoDocumento.router)
+app.include_router(hml_datosHistoricos.router)
+app.include_router(hml_generarDocumento.router)
+app.include_router(hml_generarDocumentoUsuarioExterno.router)
+
 
 @app.get("/test_servicios", response_class=HTMLResponse)
 def root(request: Request):
