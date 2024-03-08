@@ -39,6 +39,14 @@ from routers.hml.datosHistoricos import datosHistoricos as hml_datosHistoricos
 from routers.hml.generacionDocumentos import generarDocumento as hml_generarDocumento
 from routers.hml.generacionDocumentos import generarDocumentoUsuarioExterno as hml_generarDocumentoUsuarioExterno
 from routers.hml.generacionExpediente import generarCaratulaExpediente as hml_generarCaratulaExpediente
+from routers.hml.bloqueoExpediente import bloquearExpediente as hml_bloquearExpediente
+from routers.hml.bloqueoExpediente import desbloquearExpediente as hml_desbloquearExpediente
+from routers.hml.bloqueoExpediente import estaExpedienteBloqueado as hml_estaExpedienteBloqueado
+from routers.hml.generacionPaseExpediente import generarPaseExpediente as hml_generarPaseExpediente
+from routers.hml.generacionPaseExpediente import generarPaseExpedienteConBloqueo as hml_generarPaseExpedienteConBloqueo
+from routers.hml.generacionPaseExpediente import generarPaseExpedienteConDesbloqueo as hml_generarPaseExpedienteConDesbloqueo
+from routers.hml.generacionPaseExpediente import generarPaseExpedienteSinDocumento as hml_generarPaseExpedienteSinDocumento
+
 
 import configparser
 from pathlib import Path
@@ -87,7 +95,13 @@ app.include_router(hml_datosHistoricos.router)
 app.include_router(hml_generarDocumento.router)
 app.include_router(hml_generarDocumentoUsuarioExterno.router)
 app.include_router(hml_generarCaratulaExpediente.router)
-
+app.include_router(hml_bloquearExpediente.router)
+app.include_router(hml_desbloquearExpediente.router)
+app.include_router(hml_estaExpedienteBloqueado.router)
+app.include_router(hml_generarPaseExpediente.router)
+app.include_router(hml_generarPaseExpedienteConBloqueo.router)
+app.include_router(hml_generarPaseExpedienteConDesbloqueo.router)
+app.include_router(hml_generarPaseExpedienteSinDocumento.router)
 
 @app.get("/test_servicios", response_class=HTMLResponse)
 def root(request: Request):
