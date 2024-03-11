@@ -55,6 +55,8 @@ from routers.hml.documentosOficiales import desvincularDocumentosOficialesConNum
 from routers.hml.documentosTrabajo import adjuntarDocumentosTrabajo as hml_adjuntarDocumentosTrabajo
 from routers.hml.documentosTrabajo import buscarArchivoTrabajo as hml_buscarArchivoTrabajo
 from routers.hml.documentosTrabajo import desadjuntarDocumentosTrabajo as hml_desadjuntarDocumentosTrabajo
+from routers.hml.expedientesAsociados import asociarExpediente as hml_asociarExpediente
+from routers.hml.expedientesAsociados import desasociarExpediente as hml_desasociarExpediente
 
 import configparser
 from pathlib import Path
@@ -119,6 +121,8 @@ app.include_router(hml_desvincularDocumentosOficialesConNumeroEspecial.router)
 app.include_router(hml_adjuntarDocumentosTrabajo.router)
 app.include_router(hml_buscarArchivoTrabajo.router)
 app.include_router(hml_desadjuntarDocumentosTrabajo.router)
+app.include_router(hml_asociarExpediente.router)
+app.include_router(hml_desasociarExpediente.router)
 
 @app.get("/test_servicios", response_class=HTMLResponse)
 def root(request: Request):
