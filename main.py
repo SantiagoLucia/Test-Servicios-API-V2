@@ -58,6 +58,7 @@ from routers.hml.documentosTrabajo import desadjuntarDocumentosTrabajo as hml_de
 from routers.hml.expedientesAsociados import asociarExpediente as hml_asociarExpediente
 from routers.hml.expedientesAsociados import desasociarExpediente as hml_desasociarExpediente
 from routers.hml.ffcc import buscarPorNombre as hml_buscarPorNombre
+from routers.hml.generarTareaGEDO import generarTareaGEDO as hml_generarTareaGEDO
 
 import configparser
 from pathlib import Path
@@ -125,6 +126,7 @@ app.include_router(hml_desadjuntarDocumentosTrabajo.router)
 app.include_router(hml_asociarExpediente.router)
 app.include_router(hml_desasociarExpediente.router)
 app.include_router(hml_buscarPorNombre.router)
+app.include_router(hml_generarTareaGEDO.router)
 
 @app.get("/test_servicios", response_class=HTMLResponse)
 def root(request: Request):
