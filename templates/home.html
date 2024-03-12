@@ -3,510 +3,73 @@
 
 <head>
     <title>Test Servicios API - V2</title>
-    <style type="text/css">
-
-        h1, h2 {
-            font-family: sans-serif;
-        }
-
-        .styled-table {
-            border-collapse: collapse;
-            margin: 25px 0;
-            font-size: 0.9em;
-            font-family: sans-serif;
-            min-width: 400px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-        }
-        .styled-table thead tr {
-            background-color: #39a2db;
-            color: #ffffff;
-            text-align: left;
-        }
-        .styled-table th,
-        .styled-table td {
-            padding: 12px 15px;
-        }
-        .styled-table tbody tr {
-            border-bottom: 1px solid #dddddd;
-        }
-        .styled-table tbody tr:nth-of-type(even) {
-            background-color: #f3f3f3;
-        }
-        .styled-table tbody tr:last-of-type {
-            border-bottom: 2px solid #39a2db;
-        }        
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', path='styles.css') }}">
 </head>
 
 <body>
     <h1>Test Servicios API - V2</h1>
     <h2>Aplicación para testear servicios web de GDEBA.</h2>
+    
+    <div class="row">
+        <div class="column">
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>HML</th>
+                        <th></th>
+                    </tr>
+                </thead>
+            </table>
+                
+            {% for servicio, metodos in dic_metodos.items() %}
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>{{ servicio }}</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for metodo in metodos %}
+                    <tr>
+                        <td>{{ metodo }}</td>
+                        <td><a href="http://127.0.0.1:8000/test_servicios/hml/{{ servicio }}/{{ metodo }}">Ejecutar</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endfor %}
+        </div>
 
-    <table class="styled-table">
-        <thead>
-            <tr>
-                <th>HML</th>
-                <th></th>
-            </tr>
-        </thead>
-    </table>
-
-    <table class="styled-table">
-        <thead>
-            <tr>
-                <th>consultaUsuario</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>buscarPorUsuario</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultaUsuario/buscarPorUsuario">Ejecutar</a></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <table class="styled-table">
-        <thead>
-            <tr>
-                <th>consultaDocumento</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>buscarDetallePorNumero</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultaDocumento/buscarDetallePorNumero">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>buscarDocumentoEnExpedientes</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultaDocumento/buscarDocumentoEnExpedientes">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>buscarDocumentoPublicablePorNumero</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultaDocumento/buscarDocumentoPublicablePorNumero">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>buscarNumeroGDEBA</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultaDocumento/buscarNumeroGDEBA">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>buscarPDFPorNumero</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultaDocumento/buscarPDFPorNumero">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>buscarPorNumero</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultaDocumento/buscarPorNumero">Ejecutar</a></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <table class="styled-table">
-        <thead>
-            <tr>
-                <th>consultaCuitCuil</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>buscarPorCuitCuil</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultaCuitCuil/buscarPorCuitCuil">Ejecutar</a></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <table class="styled-table">
-        <thead>
-            <tr>
-                <th>consultaExpediente</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>buscarCaratulaPorNumeroExpediente</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultaExpediente/buscarCaratulaPorNumeroExpediente">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>buscarCodigoCaratulaPorNumeroExpediente</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultaExpediente/buscarCodigoCaratulaPorNumeroExpediente">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>buscarDatosExpedientePorCodigosTrata</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultaExpediente/buscarDatosExpedientePorCodigosTrata">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>buscarDatosExpedienteVariable</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultaExpediente/buscarDatosExpedienteVariable">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>buscarExpediente</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultaExpediente/buscarExpediente">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>buscarExpedientePorIdSistemaExterno</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultaExpediente/buscarExpedientePorIdSistemaExterno">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>buscarExpedientesPorSistemaOrigenLibreUsuario</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultaExpediente/buscarExpedientesPorSistemaOrigenLibreUsuario">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>buscarExpedientesPorSistemaOrigenUsuario</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultaExpediente/buscarExpedientesPorSistemaOrigenUsuario">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>buscarHistorialPasesExpediente</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultaExpediente/buscarHistorialPasesExpediente">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>consultarCaratulaVariablePorNumeroExpedienteUsuario</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultaExpediente/consultarCaratulaVariablePorNumeroExpedienteUsuario">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>consultarExpedienteDetallado</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultaExpediente/consultarExpedienteDetallado">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>consultarExpedientesPorSistemaOrigenLibreReparticion</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultaExpediente/consultarExpedientesPorSistemaOrigenLibreReparticion">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>consultarExpedientesPorSistemaOrigenReparticion</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultaExpediente/consultarExpedientesPorSistemaOrigenReparticion">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>consultarIdFCPorNumeroExpediente</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultaExpediente/consultarIdFCPorNumeroExpediente">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>validarExpediente</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultaExpediente/validarExpediente">Ejecutar</a></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <table class="styled-table">
-        <thead>
-            <tr>
-                <th>consultaEstadoPaseExpediente</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>consultaEstadoActualExpediente</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultaEstadoPaseExpediente/consultaEstadoActualExpediente">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>consultaEstadosPaseExpedientePosibles</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultaEstadoPaseExpediente/consultaEstadosPaseExpedientePosibles">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>esEstadoPaseExpedienteValido</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultaEstadoPaseExpediente/esEstadoPaseExpedienteValido">Ejecutar</a></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <table class="styled-table">
-        <thead>
-            <tr>
-                <th>consultaRegistro</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>consultarRegistroPorCUIT</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultaRegistro/consultarRegistroPorCUIT">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>consultarRegistroPorNumero</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultaRegistro/consultarRegistroPorNumero">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>listarRegistroPublico</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultaRegistro/listarRegistroPublico">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>listarTodosLosRegistrosPublicos</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultaRegistro/listarTodosLosRegistrosPublicos">Ejecutar</a></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <table class="styled-table">
-        <thead>
-            <tr>
-                <th>consultarNumero</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>consultarNumero</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultarNumero/consultarNumero">Ejecutar</a></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <table class="styled-table">
-        <thead>
-            <tr>
-                <th>consultaTipoDocumento</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>consultarTipoDocumento</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/consultaTipoDocumento/consultarTipoDocumento">Ejecutar</a></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <table class="styled-table">
-        <thead>
-            <tr>
-                <th>datosHistoricos</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>datosHistoricos</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/datosHistoricos/datosHistoricos">Ejecutar</a></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <table class="styled-table">
-        <thead>
-            <tr>
-                <th>generacionDocumentos</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>generarDocumento</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/generacionDocumentos/generarDocumento">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>generarDocumentoUsuarioExterno</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/generacionDocumentos/generarDocumentoUsuarioExterno">Ejecutar</a></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <table class="styled-table">
-        <thead>
-            <tr>
-                <th>generacionExpediente</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>generarCaratulaExpediente</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/generacionExpediente/generarCaratulaExpediente">Ejecutar</a></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <table class="styled-table">
-        <thead>
-            <tr>
-                <th>bloqueoExpediente</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>bloquearExpediente</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/bloqueoExpediente/bloquearExpediente">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>desbloquearExpediente</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/bloqueoExpediente/desbloquearExpediente">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>estaExpedienteBloqueado</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/bloqueoExpediente/estaExpedienteBloqueado">Ejecutar</a></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <table class="styled-table">
-        <thead>
-            <tr>
-                <th>generacionPaseExpediente</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>generarPaseExpediente</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/generacionPaseExpediente/generarPaseExpediente">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>generarPaseExpedienteConBloqueo</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/generacionPaseExpediente/generarPaseExpedienteConBloqueo">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>generarPaseExpedienteConDesbloqueo</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/generacionPaseExpediente/generarPaseExpedienteConDesbloqueo">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>generarPaseExpedienteSinDocumento</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/generacionPaseExpediente/generarPaseExpedienteSinDocumento">Ejecutar</a></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <table class="styled-table">
-        <thead>
-            <tr>
-                <th>documentosOficiales</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>vincularDocumentosOficiales</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/documentosOficiales/vincularDocumentosOficiales">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>desvincularDocumentosOficiales</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/documentosOficiales/desvincularDocumentosOficiales">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>hacerDefinitivosDocumentosOficiales</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/documentosOficiales/hacerDefinitivosDocumentosOficiales">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>eliminarDocumentosOficialesNoDefinitivos</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/documentosOficiales/eliminarDocumentosOficialesNoDefinitivos">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>vincularDocumentosOficialesConNumeroEspecial</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/documentosOficiales/vincularDocumentosOficialesConNumeroEspecial">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>desvincularDocumentosOficialesConNumeroEspecial</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/documentosOficiales/desvincularDocumentosOficialesConNumeroEspecial">Ejecutar</a></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <table class="styled-table">
-        <thead>
-            <tr>
-                <th>documentosTrabajo</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>adjuntarDocumentosTrabajo</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/documentosTrabajo/adjuntarDocumentosTrabajo">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>buscarArchivoTrabajo</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/documentosTrabajo/buscarArchivoTrabajo">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>desadjuntarDocumentosTrabajo</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/documentosTrabajo/desadjuntarDocumentosTrabajo">Ejecutar</a></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <table class="styled-table">
-        <thead>
-            <tr>
-                <th>expedientesAsociados</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>asociarExpediente</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/expedientesAsociados/asociarExpediente">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>desasociarExpediente</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/expedientesAsociados/desasociarExpediente">Ejecutar</a></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <table class="styled-table">
-        <thead>
-            <tr>
-                <th>FFCC</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>buscarPorNombre</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/ffcc/buscarPorNombre">Ejecutar</a></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <table class="styled-table">
-        <thead>
-            <tr>
-                <th>generarTareaGEDO</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>generarTareaGEDO</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/generarTareaGEDO/generarTareaGEDO">Ejecutar</a></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <table class="styled-table">
-        <thead>
-            <tr>
-                <th>tramitacionConjunta</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>vincularTramitacionConjunta</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/tramitacionConjunta/vincularTramitacionConjunta">Ejecutar</a></td>
-            </tr>
-            <tr>
-                <td>desvincularTramitacionConjunta</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/tramitacionConjunta/desvincularTramitacionConjunta">Ejecutar</a></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <table class="styled-table">
-        <thead>
-            <tr>
-                <th>tratas</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>buscarTratasPorCodigo</td>
-                <td><a href="http://127.0.0.1:8000/test_servicios/hml/tratas/buscarTratasPorCodigo">Ejecutar</a></td>
-            </tr>
-        </tbody>
-    </table>
-
+        <div class="column">
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>PROD</th>
+                        <th></th>
+                    </tr>
+                </thead>
+            </table>
+    
+            {% for servicio, metodos in dic_metodos.items() %}
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>{{ servicio }}</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for metodo in metodos %}
+                    <tr>
+                        <td>{{ metodo }}</td>
+                        <td><a href="http://127.0.0.1:8000/test_servicios/prod/{{ servicio }}/{{ metodo }}">Ejecutar</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endfor %}
+        </div>    
+    </div>
 </body>
-
 </html>

@@ -7,13 +7,13 @@ from pathlib import Path
 config = configparser.ConfigParser()
 config.read(Path("config.ini"))
 
-uri_token = config["hml"]["uri_token"]
-auth = (config["hml"]["user"], config["hml"]["pass"])
-uri_servicio = config["hml"]["uri_consultaTipoDocumento"]
+uri_token = config["prod"]["uri_token"]
+auth = (config["prod"]["user"], config["prod"]["pass"])
+uri_servicio = config["prod"]["uri_consultaTipoDocumento"]
 
 router = APIRouter()
 
-@router.get("/test_servicios/hml/consultaTipoDocumento/consultarTipoDocumento", tags=["hml","consultarTipoDocumento"])
+@router.get("/test_servicios/prod/consultaTipoDocumento/consultarTipoDocumento", tags=["prod","consultarTipoDocumento"])
 def test_consultarTipoDocumento():
     try:
         request = {"acronimo": "TESTL"}
