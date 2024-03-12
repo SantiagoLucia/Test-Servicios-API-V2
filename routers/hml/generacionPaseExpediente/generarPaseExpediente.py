@@ -43,6 +43,7 @@ def test_generarPaseExpediente():
             "codigo": codigo,
             "tiempo": tiempo,
             "fecha": dt,
+            "numero": numero,
             "request": request,
             "response": contenido,
             }

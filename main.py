@@ -59,6 +59,8 @@ from routers.hml.expedientesAsociados import asociarExpediente as hml_asociarExp
 from routers.hml.expedientesAsociados import desasociarExpediente as hml_desasociarExpediente
 from routers.hml.ffcc import buscarPorNombre as hml_buscarPorNombre
 from routers.hml.generarTareaGEDO import generarTareaGEDO as hml_generarTareaGEDO
+from routers.hml.tramitacionConjunta import vincularTramitacionConjunta as hml_vincularTramitacionConjunta
+from routers.hml.tramitacionConjunta import desvincularTramitacionConjunta as hml_desvincularTramitacionConjunta
 
 import configparser
 from pathlib import Path
@@ -127,6 +129,9 @@ app.include_router(hml_asociarExpediente.router)
 app.include_router(hml_desasociarExpediente.router)
 app.include_router(hml_buscarPorNombre.router)
 app.include_router(hml_generarTareaGEDO.router)
+app.include_router(hml_vincularTramitacionConjunta.router)
+app.include_router(hml_desvincularTramitacionConjunta.router)
+
 
 @app.get("/test_servicios", response_class=HTMLResponse)
 def root(request: Request):
