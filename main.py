@@ -61,6 +61,7 @@ from routers.hml.ffcc import buscarPorNombre as hml_buscarPorNombre
 from routers.hml.generarTareaGEDO import generarTareaGEDO as hml_generarTareaGEDO
 from routers.hml.tramitacionConjunta import vincularTramitacionConjunta as hml_vincularTramitacionConjunta
 from routers.hml.tramitacionConjunta import desvincularTramitacionConjunta as hml_desvincularTramitacionConjunta
+from routers.hml.tratas import buscarTratasPorCodigo as hml_buscarTratasPorCodigo
 
 import configparser
 from pathlib import Path
@@ -131,7 +132,7 @@ app.include_router(hml_buscarPorNombre.router)
 app.include_router(hml_generarTareaGEDO.router)
 app.include_router(hml_vincularTramitacionConjunta.router)
 app.include_router(hml_desvincularTramitacionConjunta.router)
-
+app.include_router(hml_buscarTratasPorCodigo.router)
 
 @app.get("/test_servicios", response_class=HTMLResponse)
 def root(request: Request):
