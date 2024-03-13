@@ -10,6 +10,10 @@
     <h1>Test Servicios API - V2</h1>
     <h2>Aplicación para testear servicios web de GDEBA.</h2>
     
+    <div class="modal hidden">
+        <button class="close-modal">&times;</button>
+    </div>
+
     <div class="row">
         <div class="column">
             <table class="styled-table">
@@ -33,7 +37,8 @@
                     {% for metodo in metodos %}
                     <tr>
                         <td>{{ metodo }}</td>
-                        <td><a href="http://127.0.0.1:8000/test_servicios/hml/{{ servicio }}/{{ metodo }}">Ejecutar</a></td>
+                        <td><a href="http://127.0.0.1:8000/test_servicios/hml/{{ servicio }}/{{ metodo }}" target="_blank">Ejecutar</a></td>
+                        
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -63,7 +68,7 @@
                     {% for metodo in metodos %}
                     <tr>
                         <td>{{ metodo }}</td>
-                        <td><a href="http://127.0.0.1:8000/test_servicios/prod/{{ servicio }}/{{ metodo }}">Ejecutar</a></td>
+                        <td><a href="http://127.0.0.1:8000/test_servicios/prod/{{ servicio }}/{{ metodo }}" target="_blank">Ejecutar</a></td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -71,5 +76,6 @@
             {% endfor %}
         </div>    
     </div>
+    <script src="{{ url_for('static', path='script.js') }}"></script>
 </body>
 </html>
