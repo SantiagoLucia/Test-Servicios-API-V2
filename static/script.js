@@ -7,6 +7,12 @@ const p = document.querySelector('p');
 
 const openModal = function () {
   modal.classList.remove('hidden');
+  window.scrollTo({
+    top: modal.offsetTop - 75,
+    left: 0,
+    behavior: 'smooth'
+  });
+
 };
 
 const closeModal = function () {
